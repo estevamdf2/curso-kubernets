@@ -1,0 +1,13 @@
+apiVersion: apiserver.config.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: encryptionconfigurations.apiserver.config.k8s.io
+resources:
+  - resources:
+      - secrets
+      - configmaps
+    providers:
+      - aescbc:
+          keys:
+            - name: key1
+              secret: blable
