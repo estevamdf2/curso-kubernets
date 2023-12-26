@@ -5,7 +5,7 @@ metadata:
   labels:
     app: vollmed
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: vollmed
@@ -19,19 +19,28 @@ spec:
         image: leonardosartorello/vollmed:v8
         ports:
         - containerPort: 3000
-        env: 
-        - name: DB_HOST
+        env:
+        - name: DB_HOST # Notice that the case is different here
           valueFrom:
             configMapKeyRef:
-              name: dados
-              key: DB_HOST
-        - name: DB_DATABASE
+              name: dados           # The ConfigMap this value comes from.
+              key: DB_HOST # The key to fetch.
+
+        - name: DB_DATABASE # Notice that the case is different here
           valueFrom:
             configMapKeyRef:
-              name: dados
-              key: DB_DATABASE
-        - name: DB_PASSWORD
+              name: dados           # The ConfigMap this value comes from.
+              key: DB_DATABASE # The key to fetch.
+
+        - name: DB_PASSWORD # Notice that the case is different here
           valueFrom:
-            secretMapKeyRef:
-              name: dados
-              key: DB_PASSWORD
+            secretKeyRef:
+              name: senhas           # The ConfigMap this value comes from.
+              key: DB_PASSWORD # The key to fetch.
+              
+        livenessProbe:
+          httpGet:
+            path: /paciente
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 3

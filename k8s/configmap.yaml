@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: dados
 data:
- DB_HOST: db
+ DB_HOST: mysql
  DB_DATABASE: testemed
  

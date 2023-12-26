@@ -11,6 +11,77 @@ spec:
       served: true
       storage: true
       schema:
+        openAPIV3Schema:
+          description: "EncryptionConfiguration is a configuration resource for Kubernetes encryption at rest."
+          properties:
+            spec:
+              description: "Specification of the EncryptionConfiguration."
+              properties:
+                resources:
+                  description: "List of resources and their encryption providers."
+                  items:
+                    properties:
+                      providers:
+                        description: "List of encryption providers for the resource."
+                        items:
+                          properties:
+                            identity:
+                              description: "Provider for storing resources as plain text."
+                              type: object
+                            aesgcm:
+                              description: "AES-GCM encryption provider."
+                              properties:
+                                keys:
+                                  description: "List of encryption keys."
+                                  items:
+                                    properties:
+                                      name:
+                                        description: "Name of the encryption key."
+                                        type: string
+                                      secret:
+                                        description: "Base64-encoded secret key."
+                                        type: string
+                                  type: array
+                              type: object
+                            aescbc:
+                              description: "AES-CBC encryption provider."
+                              properties:
+                                keys:
+                                  description: "List of encryption keys."
+                                  items:
+                                    properties:
+                                      name:
+                                        description: "Name of the encryption key."
+                                        type: string
+                                      secret:
+                                        description: "Base64-encoded secret key."
+                                        type: string
+                                    type: object
+                                  type: array
+                              type: object
+                            secretbox:
+                              description: "Secretbox encryption provider."
+                              properties:
+                                keys:
+                                  description: "List of encryption keys."
+                                  items:
+                                    properties:
+                                      name:
+                                        description: "Name of the encryption key."
+                                        type: string
+                                      secret:
+                                        description: "Base64-encoded secret key."
+                                        type: string
+                                    type: object
+                                  type: array
+                              type: object
+                      resources:
+                        description: "List of resource names."
+                        items:
+                          type: string
+                  type: object
+              type: object
+          type: object
   scope: Namespaced
   names:
     plural: encryptionconfigurations
