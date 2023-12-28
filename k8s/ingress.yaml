@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vollmed-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: vollmed-api
+  rules:
+  - host: "vollmed.ebc.com.br"
+  - http:
+      paths:
+      - path: /pacientes
+        pathType: Prefix
+        backend:
+          service:
+            name: nodeport-api
+            port:
+              number: 3000

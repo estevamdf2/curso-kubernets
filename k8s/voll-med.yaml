@@ -4,6 +4,7 @@ metadata:
   name: vollmed
   labels:
     app: vollmed
+  # namespace: frontend
 spec:
   replicas: 3
   selector:
