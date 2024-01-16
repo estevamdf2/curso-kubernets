@@ -1,5 +1,9 @@
-# Kubernets: prática, Helm e Cloud
+# [Formação Kubernetes](https://cursos.alura.com.br/formacao-kubernetes)
 
-Curso da Alura para provisionar aplicações via Kubernets com o uso de HelmChart.
+Cursos da Alura para provisionar aplicações via Kubernets com o uso de HelmChart.
 
-Link [Curso](https://cursos.alura.com.br/course/kubernetes-pratica-helm-cloud)
+[Kubernetes Prática, Helm e cloud](https://cursos.alura.com.br/course/kubernetes-pratica-helm-cloud)
+
+[Curso K8S Deployments, Volume e escalabilidade](k8s-deployments/README.md)
+
+[Curso K8S Pods, services e configmap](k8s-pods-services-configmap/README.md)
